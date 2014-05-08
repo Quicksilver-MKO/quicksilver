@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+*.txt       text eol=crlf
+*.lua       text eol=crlf
+*.xml       text eol=crlf
+*.sh        text eol=lf
+
