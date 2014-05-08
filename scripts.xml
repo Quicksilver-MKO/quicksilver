@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.0">
+    <ScriptPackage>
+        <ScriptGroup isActive="yes" isFolder="yes">
+            <name>quicksilver</name>
+            <packageName></packageName>
+            <script></script>
+            <eventHandlerList/>
+            <ScriptGroup isActive="yes" isFolder="yes">
+                <name>GMCP</name>
+                <packageName></packageName>
+                <script></script>
+                <eventHandlerList/>
+                <Script isActive="yes" isFolder="no">
+                    <name>gmcp_vitals</name>
+                    <packageName></packageName>
+                    <script>function gmcp_vitals()
+ qs.gmcp.vitals()
+end</script>
+                    <eventHandlerList>
+                        <string>gmcp.Char.Vitals</string>
+                    </eventHandlerList>
+                </Script>
+                <Script isActive="yes" isFolder="no">
+                    <name>gmcp_room</name>
+                    <packageName></packageName>
+                    <script>function gmcp_room()
+ qs.gmcp.room()
+end</script>
+                    <eventHandlerList>
+                        <string>gmcp.Room.Info</string>
+                    </eventHandlerList>
+                </Script>
+                <Script isActive="yes" isFolder="no">
+                    <name>gmcp_status</name>
+                    <packageName></packageName>
+                    <script>function gmcp_status()
+ qs.gmcp.status()
+end</script>
+                    <eventHandlerList>
+                        <string>gmcp.Char.Status</string>
+                    </eventHandlerList>
+                </Script>
+                <Script isActive="yes" isFolder="no">
+                    <name>gmcp_skills_groups</name>
+                    <packageName></packageName>
+                    <script>function gmcp_skills_groups()
+ qs.gmcp.skills_groups()
+end</script>
+                    <eventHandlerList>
+                        <string>gmcp.Char.Skills.Groups</string>
+                    </eventHandlerList>
+                </Script>
+                <Script isActive="yes" isFolder="no">
+                    <name>gmcp_skills_list</name>
+                    <packageName></packageName>
+                    <script>function gmcp_skills_list()
+ qs.gmcp.skills_list()
+end</script>
+                    <eventHandlerList>
+                        <string>gmcp.Char.Skills.List</string>
+                    </eventHandlerList>
+                </Script>
+                <Script isActive="yes" isFolder="no">
+                    <name>gmcp_players</name>
+                    <packageName></packageName>
+                    <script>function gmcp_players()
+ qs.gmcp.players()
+end</script>
+                    <eventHandlerList>
+                        <string>gmcp.Comm.Channel.Players</string>
+                    </eventHandlerList>
+                </Script>
+                <Script isActive="yes" isFolder="no">
+                    <name>gmcp_fishing</name>
+                    <packageName></packageName>
+                    <script>function gmcp_fishing()
+ qs.gmcp.fishing()
+end</script>
+                    <eventHandlerList>
+                        <string>gmcp.Char.Vitals</string>
+                    </eventHandlerList>
+                </Script>
+                <ScriptGroup isActive="yes" isFolder="yes">
+                    <name>inventory</name>
+                    <packageName></packageName>
+                    <script></script>
+                    <eventHandlerList/>
+                    <Script isActive="yes" isFolder="no">
+                        <name>gmcp_items_list</name>
+                        <packageName></packageName>
+                        <script>function gmcp_items_list()
+ qs.gmcp.items_list()
+end</script>
+                        <eventHandlerList>
+                            <string>gmcp.Char.Items.List</string>
+                        </eventHandlerList>
+                    </Script>
+                    <Script isActive="yes" isFolder="no">
+                        <name>gmcp_items_add</name>
+                        <packageName></packageName>
+                        <script>function gmcp_items_add()
+ qs.gmcp.items_add()
+end</script>
+                        <eventHandlerList>
+                            <string>gmcp.Char.Items.Add</string>
+                        </eventHandlerList>
+                    </Script>
+                    <Script isActive="yes" isFolder="no">
+                        <name>gmcp_items_remove</name>
+                        <packageName></packageName>
+                        <script>function gmcp_items_remove()
+ qs.gmcp.items_remove()
+end</script>
+                        <eventHandlerList>
+                            <string>gmcp.Char.Items.Remove</string>
+                        </eventHandlerList>
+                    </Script>
+                    <Script isActive="yes" isFolder="no">
+                        <name>gmcp_items_update</name>
+                        <packageName></packageName>
+                        <script>function gmcp_items_update()
+ qs.gmcp.items_update()
+end</script>
+                        <eventHandlerList>
+                            <string>gmcp.Char.Items.Update</string>
+                        </eventHandlerList>
+                    </Script>
+                </ScriptGroup>
+            </ScriptGroup>
+            <ScriptGroup isActive="yes" isFolder="yes">
+                <name>meta utilities</name>
+                <packageName></packageName>
+                <script></script>
+                <eventHandlerList/>
+                <Script isActive="yes" isFolder="no">
+                    <name>utilities</name>
+                    <packageName></packageName>
+                    <script>-- QS - Meta utilities
+
+qss = qss or {} -- contains the meta functions, non specific to MKO, but that do make the system work.
+qss.loaded = qss.loaded or {}
+qss.reloading = false
+
+function qss.get_system_file(f)
+ local fileinfo
+ local file
+ local choices = {
+  &quot;quicksilver10/qs&quot;,
+  &quot;quicksilver9/qs&quot;,
+  &quot;quicksilver8/qs&quot;,
+  &quot;quicksilver7/qs&quot;,
+  &quot;quicksilver6/qs&quot;,
+  &quot;quicksilver5/qs&quot;,
+  &quot;quicksilver4/qs&quot;,
+  &quot;quicksilver3/qs&quot;,
+  &quot;quicksilver2/qs&quot;,
+  &quot;quicksilver1/qs&quot;,
+  &quot;quicksilver/qs&quot;,
+  &quot;Quicksilver/qs&quot;,
+  &quot;qs&quot;,
+ }
+ if not qss.folder then
+  local found = false
+  local twice = false
+  local others = {}
+  for _,v in pairs(choices) do
+   file = getMudletHomeDir() .. &quot;/&quot; .. v
+   fileinfo = lfs.attributes(file)
+   if fileinfo then
+    if found then
+     twice = true
+     table.append(others, file)
+    else
+     found = true
+     qss.folder = file
+    end
+   end
+  end
+  if twice then
+   cecho(&quot;\n&lt;white&gt;You seem to have several folders that could contain scripts, we're using this one: &lt;yellow&gt;&quot;.. qss.folder.. &quot;&lt;white&gt;.Please check if it's the appropriate one, and delete whatever is unnecessary&quot;)
+  else
+   if found then
+    cecho(&quot;\n&lt;white&gt;Using scripts in folder: &lt;yellow&gt;&quot;..qss.folder)
+   else
+    qss.folder = &quot;xml&quot;
+    cecho(&quot;\n&lt;white&gt;Using scripts taken from &lt;yellow&gt;lua.xml&lt;white&gt; -- If you installed the regular package this should not happen.&quot;)
+   end
+  end
+ end
+ if f then
+  if qss.folder ~= &quot;xml&quot; then
+  fileinfo = lfs.attributes(qss.folder .. &quot;/&quot; .. f)
+  if fileinfo then
+   return qss.folder .. &quot;/&quot; .. f
+  else
+   for _,v in pairs(choices) do
+    file = getMudletHomeDir() .. &quot;/&quot; .. v .. &quot;/&quot; .. f
+    fileinfo = lfs.attributes(file)
+    if fileinfo then
+     return file
+    end
+   end
+  end
+  else
+   return f:gsub(&quot;/&quot;,&quot;_&quot;):gsub(&quot;.lua&quot;,&quot;&quot;)
+  end
+ else
+  return qss.folder
+ end
+end
+
+function qss.load_lua(f, hide)
+ local fileinfo
+ if string.sub(f,-1) == &quot;/&quot; then
+  f = f .. &quot;init&quot;
+ end
+ if string.sub(f,-4) == &quot;.lua&quot; then
+  f = f:sub(1,-5)
+ end
+ if qss.loaded[f] and not qss.reloading then
+  if not hide then
+   echo(&quot;Script &quot;..f..&quot; already loaded.\n&quot;)
+  end
+  return false
+ else
+  local file = qss.get_system_file(f.. &quot;.lua&quot;)
+  if not file then
+   if not hide then
+    echo(&quot;\nCould not find file &quot;..f..&quot;.lua in the folder &quot;..qss.get_system_file())
+   end
+   return false
+  end
+  local b,e
+  b = false
+  if qss.folder ~= &quot;xml&quot; then
+   b,e = pcall(dofile,file)
+  else
+   if qss[file] then
+    e = &quot;Error in function qss.&quot;..file
+    qss[file]()
+    e = &quot;&quot;
+    b = true
+   else
+    e = &quot;Could not find function qss.&quot;..file..&quot; in the system&quot;
+   end
+  end
+  if not b then
+   if not hide then
+    echo(e..&quot;\n&quot;)
+   end
+   return false
+  end
+  qss.loaded[f] = true
+  if not hide then
+  if qss.reloading then
+   echo(&quot;\nScript &quot;..f..&quot; successfully reloaded.&quot;)
+  else
+   echo(&quot;\nScript &quot;..f..&quot; successfully loaded.&quot;)
+  end
+  end
+  return true
+ end
+end
+
+function qss.reload_lua(f)
+ qss.reloading = true
+ qss.load_lua(f)
+ qss.reloading = false
+end
+
+function qss.load()
+ qss.load_lua(&quot;init&quot;)
+end</script>
+                    <eventHandlerList/>
+                </Script>
+                <Script isActive="yes" isFolder="no">
+                    <name>loading script</name>
+                    <packageName></packageName>
+                    <script>-- QS - This script loads the system. It's run when you open the profile.
+
+qss.load()</script>
+                    <eventHandlerList/>
+                </Script>
+            </ScriptGroup>
+        </ScriptGroup>
+    </ScriptPackage>
+</MudletPackage>
