@@ -4,7 +4,9 @@
 qst = qst or {} --triggers [they will be checked for illusions automatically]
 qsf = qsf or {} --system functions
 qsv = qsv or {} --temporary variables
+qsg = qsg or {} --functions called by GMCP messages
 
+qss.load_lua("utils/")
 
 -- setup (variables, config...)
 qss.load_lua("setup/")
