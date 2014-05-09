@@ -93,3 +93,32 @@ local functions_metatable = {
  end,
 }
 qsf = setmetatable(qsf,functions_metatable)
+
+--aliases table
+qsb.aliases = {}
+local aliases_metatable = {
+ __index = function (t,k)
+  if qsb.aliases[k] then
+   qss.debug("Called alias qsa."..k.."()",100)
+   return function (...)
+    local arg = ...
+    local b,e = xpcall(function () 
+     return qsb.aliases[k](arg)
+    end, err_handler)
+    if not b then
+     qss.error("qsa."..k)
+    end
+   end
+  else
+   error("Attempt to access qsa."..k.." which does not exist")
+  end
+ end,
+ __newindex = function (t,k,v)
+  if type(v) == "function" then
+   qsb.aliases[k] = v
+  else
+   error("Attempt to add "..k.." to qsa, instead of a function.")
+  end
+ end,
+}
+qsa = setmetatable(qsa,aliases_metatable)

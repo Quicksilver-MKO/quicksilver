@@ -31,7 +31,7 @@ function directory_to_xml(filename)
  c = c + 1
  io.write( spaces(c) .. [[<name>]]..bn..[[</name>
 ]] )
- io.write( spaces(c) .. [[<script>0</script>
+ io.write( spaces(c) .. [[<script></script>
 ]] )
  io.write( spaces(c) .. [[<command></command>
 ]] )
