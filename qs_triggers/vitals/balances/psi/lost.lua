@@ -1,0 +1,21 @@
+trigger = {
+ name = "used psi balance",
+ lines = {
+  { tr = [[^You blast .* mind with a wave of psychic energy.$]], type = "p" },
+  { tr = [[Your target's mind eludes your mental grasp.]], type = "e" },
+  { tr = [[^You touch .* mind, melding it with your own.$]], type = "p" },
+  { tr = [[^You psionically rewire .* mind, deadening the neural pathways of]], type = "p" },
+  { tr = [[^You twist .* mind, locking up \w+ motor functions.$]], type = "p" },
+  { tr = [[^You twist .* mind, rewiring \w+ cognitive processes.$]], type = "p" },
+  { tr = [[^You psychically feed on .* mind, .*$]], type = "p" },
+  { tr = [[^You raise your hand in the air and clench it into a fist, telekinetically choking \w+, who clutches \w+ throat and gasps for breath.$]], type = "p" },
+  { tr = [[^You psionically rewire .* mind, overloading the neural pathways of]], type = "p" },
+  { tr = [[^You reach into .* mind, welling up \w+ doubts and fears.$]], type = "p" },
+  { tr = [[^You create a psychic feedback loop in .* mind, linking it to your nervous system.$]], type = "p" },
+  { tr = [[^You psychically wrench .* nervous system, short circuiting \w+ brain.$]], type = "p" },
+  { tr = [[^You fuse the nerves in .* brain, hardwiring \w+ mental faculties into a static state.$]], type = "p" },
+  { tr = [[^You excite each of the excess neural charges sparking in .* brain,]], type = "p" },
+  { tr = [[You traverse the neural network of your brain, clearing away all the electrical impulses that fire within in a hard reset of your brain that leaves you momentarily seeing nothing but darkness.]], type = "e" },
+ },
+ script = "psi_loss",
+}

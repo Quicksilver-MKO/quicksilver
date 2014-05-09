@@ -49,6 +49,7 @@ end
 function file_to_xml(filename)
  local c = filename:gsub("[^/]", ""):len() - sn
  local bn = filename:gsub("[^/]*/", "")
+ alias = nil
  local b, e = pcall(dofile, filename) 
  if b then
   if not alias.name then

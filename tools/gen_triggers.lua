@@ -67,6 +67,7 @@ end
 function file_to_xml(filename)
  local c = filename:gsub("[^/]", ""):len() - sn
  local bn = filename:gsub("[^/]*/", "")
+ trigger = nil
  local b, e = pcall(dofile, filename) 
  if b then
   trigger_to_xml(c,trigger)
