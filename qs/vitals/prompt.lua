@@ -11,21 +11,25 @@ function qsf.print_prompt()
  deleteLine()
  local s = "\n"
  --add something to custom the coloring
- s = s .. "<green>"..qsv.vitals.health.."h, "
- s = s .. "<green>"..qsv.vitals.endurance.."e, "
- if qsv.vitals.faith > 0 then
-  s = s .. "<green>"..qsv.vitals.faith.."f, "
+ s = s .. "<green>"..qsv.vitals.cur.H.."h, "
+ s = s .. "<green>"..qsv.vitals.cur.E.."e, "
+ if qsv.vitals.cur.F then
+  s = s .. "<green>"..qsv.vitals.cur.F.."f, "
  end
- if qsv.vitals.magic > 0 then
-  s = s .. "<green>"..qsv.vitals.magic.."m, "
+ if qsv.vitals.cur.M then
+  s = s .. "<green>"..qsv.vitals.cur.M.."m, "
  end
- if qsv.vitals.guile > 0 then
-  s = s .. "<green>"..qsv.vitals.guile.."g, "
+ if qsv.vitals.cur.G then
+  s = s .. "<green>"..qsv.vitals.cur.G.."g, "
  end
  
+ if qsv.vitals.level.tnl then
+  s = s .. "<green>"..qsv.vitals.level.tnl.."x "
+ end
+
  s = s .. "<white>"
  if qsv.bal.equil then
-  s = s .. "e"
+  s = s .. "x"
  else
   s = s .. "-"
  end
@@ -57,11 +61,29 @@ function qsf.print_prompt()
   end
  end
 
+ s = s .. "<white>A:<red>"..qsv.vitals.cur.A.."% "
+
+ for k,v in pairs(qsv.vitals.diff) do
+  if v > 0 then
+   s = s .. "<white>"..k..":+"..v
+  elseif v < 0 then
+   s = s .. "<white>"..k..":"..v
+  end
+ end
+
+ if qsv.status.unread.msgs and qsv.status.unread.news and (qsv.status.unread.msgs + qsv.status.unread.news > 0) then
+  s = s .. "<yellow>U: "
+  if qsv.status.unread.msgs > 0 then
+   s = s .. qsv.status.unread.msgs.."m"
+  end
+  if qsv.status.unread.news > 0 then
+   s = s .. qsv.status.unread.news.."n"
+  end
+ end
+
  cecho(s)
- -- add adrenaline from GMCP
  -- add target
  -- add the vote link?
- -- add the vitals changes
  -- add the enemy status
  -- add the timestamps
  -- add the informations about important toggles
@@ -75,19 +97,12 @@ function qsf.extract_prompt(matches)
  qsv.enemy.health = matches[9]
  qsv.status.combat = string.find(qsv.vitals.stats, "A:")
  qsv.bal.balance = string.find(qsv.vitals.stats, "b")
- qsv.bal.equil = string.find(qsv.vitals.stats, "e")
+ qsv.bal.equil = string.find(qsv.vitals.stats, "x")
  qsv.status.riding = string.find(qsv.vitals.stats, "r")
  qsv.status.prone = string.find(qsv.vitals.stats, "p")
  qsv.status.asleep = string.find(qsv.vitals.stats, "l")
  qsv.status.shielded = string.find(qsv.vitals.stats, "@") --temporary
  _, qsv.vitals.charges = string.gsub(qsv.vitals.stats, "%*", "")
-
- -- get those from GMCP
- qsv.vitals.health = tonumber(matches[2])
- qsv.vitals.endurance = tonumber(matches[3])
- qsv.vitals.faith = tonumber(matches[4])
- qsv.vitals.magic = tonumber(matches[5])
- qsv.vitals.guile = tonumber(matches[6])
 
  qsf.first_prompt_extract()
 end

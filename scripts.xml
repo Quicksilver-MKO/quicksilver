@@ -16,7 +16,7 @@
                     <name>gmcp_vitals</name>
                     <packageName></packageName>
                     <script>function gmcp_vitals()
- qs.gmcp.vitals()
+ qsg.vitals()
 end</script>
                     <eventHandlerList>
                         <string>gmcp.Char.Vitals</string>
@@ -26,7 +26,7 @@ end</script>
                     <name>gmcp_room</name>
                     <packageName></packageName>
                     <script>function gmcp_room()
- qs.gmcp.room()
+ qsg.room()
 end</script>
                     <eventHandlerList>
                         <string>gmcp.Room.Info</string>
@@ -36,7 +36,7 @@ end</script>
                     <name>gmcp_status</name>
                     <packageName></packageName>
                     <script>function gmcp_status()
- qs.gmcp.status()
+ qsg.status()
 end</script>
                     <eventHandlerList>
                         <string>gmcp.Char.Status</string>
@@ -46,7 +46,7 @@ end</script>
                     <name>gmcp_skills_groups</name>
                     <packageName></packageName>
                     <script>function gmcp_skills_groups()
- qs.gmcp.skills_groups()
+ qsg.skills_groups()
 end</script>
                     <eventHandlerList>
                         <string>gmcp.Char.Skills.Groups</string>
@@ -56,7 +56,7 @@ end</script>
                     <name>gmcp_skills_list</name>
                     <packageName></packageName>
                     <script>function gmcp_skills_list()
- qs.gmcp.skills_list()
+ qsg.skills_list()
 end</script>
                     <eventHandlerList>
                         <string>gmcp.Char.Skills.List</string>
@@ -66,7 +66,7 @@ end</script>
                     <name>gmcp_players</name>
                     <packageName></packageName>
                     <script>function gmcp_players()
- qs.gmcp.players()
+ qsg.players()
 end</script>
                     <eventHandlerList>
                         <string>gmcp.Comm.Channel.Players</string>
@@ -76,7 +76,7 @@ end</script>
                     <name>gmcp_fishing</name>
                     <packageName></packageName>
                     <script>function gmcp_fishing()
- qs.gmcp.fishing()
+ qsg.fishing()
 end</script>
                     <eventHandlerList>
                         <string>gmcp.Char.Vitals</string>
@@ -91,7 +91,7 @@ end</script>
                         <name>gmcp_items_list</name>
                         <packageName></packageName>
                         <script>function gmcp_items_list()
- qs.gmcp.items_list()
+ qsg.items_list()
 end</script>
                         <eventHandlerList>
                             <string>gmcp.Char.Items.List</string>
@@ -101,7 +101,7 @@ end</script>
                         <name>gmcp_items_add</name>
                         <packageName></packageName>
                         <script>function gmcp_items_add()
- qs.gmcp.items_add()
+ qsg.items_add()
 end</script>
                         <eventHandlerList>
                             <string>gmcp.Char.Items.Add</string>
@@ -111,7 +111,7 @@ end</script>
                         <name>gmcp_items_remove</name>
                         <packageName></packageName>
                         <script>function gmcp_items_remove()
- qs.gmcp.items_remove()
+ qsg.items_remove()
 end</script>
                         <eventHandlerList>
                             <string>gmcp.Char.Items.Remove</string>
@@ -121,7 +121,7 @@ end</script>
                         <name>gmcp_items_update</name>
                         <packageName></packageName>
                         <script>function gmcp_items_update()
- qs.gmcp.items_update()
+ qsg.items_update()
 end</script>
                         <eventHandlerList>
                             <string>gmcp.Char.Items.Update</string>
