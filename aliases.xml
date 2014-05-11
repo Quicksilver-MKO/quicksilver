@@ -14,6 +14,13 @@
                 <command></command>
                 <packageName></packageName>
                 <Alias isActive="yes" isFolder="no">
+                    <name>debug</name>
+                    <script>qsa.debug_report(matches)</script>
+                    <command></command>
+                    <packageName></packageName>
+                    <regex>^debug report ?(\d*)$</regex>
+                </Alias>
+                <Alias isActive="yes" isFolder="no">
                     <name>reload</name>
                     <script>qsa.reload(matches)</script>
                     <command></command>

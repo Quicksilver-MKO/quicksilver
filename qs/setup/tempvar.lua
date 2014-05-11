@@ -1,5 +1,7 @@
 -- QS : sets up all the temporary variables
 
+qsv.debug = {}
+
 qsv.status = {}
 qsv.status.asleep = false
 qsv.status.class = nil

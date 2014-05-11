@@ -1,13 +1,9 @@
 -- QS : handle the various output types
 
-function qss.error(location)
- if not qsv.err_msg then
-  qsv.err_msg = "Unknown error"
- end
- tempTimer(0,string.format([[cecho("<red>ERROR in %s: <cyan>%s\n")]], location, qsv.err_msg))
- qsv.err_msg = nil
+function qss.error_output(location, message)
+ tempTimer(0,string.format([[cecho("<red>ERROR in %s: <cyan>%s\n")]], location, message))
 end
 
-function qss.debug(m,l)
+function qss.debug_output(l,m)
  tempTimer(0,string.format([[cecho("<yellow>DEBUG%s -<white> %s\n")]],l,m))
 end
