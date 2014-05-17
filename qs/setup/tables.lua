@@ -4,7 +4,12 @@ qsb = {}
 
 local err_handler = function(e)
  local fs = package.config:sub(1,1)
- qsv.err_msg = e:match("profiles"..fs..".*"..fs.."qs"..fs..".*lua.*")
+ local em = e:match("profiles"..fs..".*"..fs.."qs"..fs..".*lua.*")
+ if em then
+  qsv.err_msg = em
+ else
+  qsv.err_msg = e
+ end
 end
 
 -- GMCP table
@@ -71,15 +76,7 @@ local functions_metatable = {
  __index = function (t,k)
   if qsb.functions[k] then
    qss.debug("Called function qsf."..k.."()",100)
-   return function (...)
-    local arg = ...
-    local b,e = xpcall(function () 
-     return qsb.functions[k](arg)
-    end, err_handler)
-    if not b then
-     qss.error("qsf."..k)
-    end
-   end
+   return qsb.functions[k]
   else
    error("Attempt to access qsf."..k.." which does not exist")
   end

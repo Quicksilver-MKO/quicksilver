@@ -54,7 +54,7 @@ function qss.debug_report(l)
   local color
   for n,m in ipairs(v.m) do
    if (not l) or (m.level <= l) then
-    if m.level < 0 then
+    if m.level < 1 then
      color = "<red>"
     elseif m.level < 10 then
      color = "<orange>"
