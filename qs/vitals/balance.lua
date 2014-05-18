@@ -58,5 +58,5 @@ end
 
 function qsf.bal_wait(type)
  qsv.bal[type] = false
- qsv.waiting[type] = false
+ qsq[type]:StopWait()
 end

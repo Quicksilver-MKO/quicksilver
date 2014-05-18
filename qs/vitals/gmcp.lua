@@ -41,6 +41,17 @@ function qsg.vitals()
   qsv.vitals.prc[s] = math.floor(n*100/qsv.vitals.max[s])
   qsv.vitals.diff[s] = qsv.vitals.old[s] - n
  end
+
+ if qsv.bal.balance and gmcp.Char.Vitals.bal ~= "1" then
+  qsf.bal_loss("balance")
+ end
+ qsv.bal.balance = (gmcp.Char.Vitals.bal == "1")
+
+ if qsv.bal.equil and gmcp.Char.Vitals.eq ~= "1" then
+  qsf.bal_loss("equil")
+ end
+ qsv.bal.equil = (gmcp.Char.Vitals.eq == "1")
+
 end
 
 function qsg.status()

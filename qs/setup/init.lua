@@ -9,3 +9,6 @@ qss.load_lua("setup/misc")
 
 -- temporary variables for the normal system use
 qss.load_lua("setup/tempvar")
+
+-- queue functions
+qss.load_lua("setup/queues")

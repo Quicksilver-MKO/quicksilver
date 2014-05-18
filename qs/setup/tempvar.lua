@@ -33,13 +33,9 @@ qsv.bal.offhand = true
 qsv.bal.psi = true
 
 qsv.waiting = {}
-qsv.waiting.balance = false
-qsv.waiting.equil = false
 qsv.waiting.focus = false
 qsv.waiting.od = false
-qsv.waiting.offhand = false
 qsv.waiting.prompt = false
-qsv.waiting.psi = false
 
 qsv.enemy = {}
 qsv.enemy.health = ""
